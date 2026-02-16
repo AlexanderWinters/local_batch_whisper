@@ -49,3 +49,25 @@ python batch_transcribe.py --help
 ## Error Handling
 
 The script includes a `try-except` block around the transcription process to catch and report errors (e.g., corrupted files, memory issues) without stopping the entire batch process.
+
+
+## Troubleshooting
+
+### Certificates error
+
+I came across the following error:
+
+```
+File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 1322, in do_open
+raise URLError(err)
+urllib.error.URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1028)>
+```
+
+I installed `certifi` and passed it's paramaters to an env variable.
+
+```
+python -m pip install certifi
+
+export SSL_CERT_FILE="$(python -c 'import certifi; print(certifi.where())')"
+python batch_transcribe.py
+```
