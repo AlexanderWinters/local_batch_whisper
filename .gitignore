@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# IDE
+.idea/
+
+# macOS
+.DS_Store
+
+# Project specific
+audio/
+text/
+
+# Whisper models cache
+~/.cache/whisper/
