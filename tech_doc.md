@@ -48,7 +48,12 @@ python batch_transcribe.py --help
 
 ## Error Handling
 
-The script includes a `try-except` block around the transcription process to catch and report errors (e.g., corrupted files, memory issues) without stopping the entire batch process.
+The script is designed to be robust. It includes a `try-except` block around the transcription and file-saving process for each individual audio file. This ensures that if an error occurs (e.g., corrupted audio file, I/O error), the script logs the error and automatically continues to the next file in the queue rather than stopping the entire batch process.
+
+At the end of the execution, the script provides a summary of:
+- Total files processed.
+- Number of successful transcriptions.
+- Number of failed transcriptions.
 
 
 ## Troubleshooting

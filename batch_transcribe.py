@@ -30,6 +30,9 @@ def main():
 
     print(f"Found {len(audio_files)} audio files.")
 
+    success_count = 0
+    failure_count = 0
+
     for audio_file in audio_files:
         output_file = text_dir / f"{audio_file.stem}.txt"
         
@@ -52,8 +55,14 @@ def main():
                 f.write(result["text"].strip())
             
             print(f"Saved transcription to {output_file}")
+            success_count += 1
         except Exception as e:
             print(f"Error transcribing {audio_file.name}: {e}")
+            failure_count += 1
+
+    print(f"\nProcessing complete.")
+    print(f"Successfully transcribed: {success_count}")
+    print(f"Failed: {failure_count}")
 
 if __name__ == "__main__":
     main()
